@@ -21,9 +21,8 @@ public class User {
    private String email;
 
 
-   @OneToOne//(fetch = FetchType.LAZY)
-   //@JoinColumn(name = "car_id")
-   @MapsId
+   @OneToOne(cascade = CascadeType.ALL)
+   @JoinColumn(name = "car_id", referencedColumnName = "car_id")
    private Car car;
 
    public User() {}
@@ -78,5 +77,16 @@ public class User {
 
    public void setEmail(String email) {
       this.email = email;
+   }
+
+   @Override
+   public String toString() {
+      return "User{" +
+              "id=" + id +
+              ", firstName='" + firstName + '\'' +
+              ", lastName='" + lastName + '\'' +
+              ", email='" + email + '\'' +
+              ", car=" + car +
+              '}';
    }
 }
